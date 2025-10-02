@@ -22,10 +22,7 @@ const app = express();
 
 // Middleware
 app.use(cors({
-    origin: [ 
-        'http://localhost:5174', 
-        'https://task-manager-xi-five-71.vercel.app/'
-    ],
+    origin:'https://task-manager-xi-five-71.vercel.app/',
     methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH', 'OPTIONS'],
     credentials: false,
     allowedHeaders: ['Content-Type', 'Authorization']
