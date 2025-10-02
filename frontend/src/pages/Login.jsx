@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom'
 
+const API_BASE = process.env.REACT_APP_API_URL;
+
 const Login = () => {
     // Initialize variables 
     const navigate = useNavigate()
@@ -15,7 +17,7 @@ const Login = () => {
         setErrorMessage("");
 
         try {
-            const response = await fetch("/api/users/login", {
+            const response = await fetch(`${API_BASE}/api/users/login`, {
                 method: "POST",
                 headers: {"Content-Type": "application/json"},
                 body: JSON.stringify({email, password}),

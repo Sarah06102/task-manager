@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
+const API_BASE = process.env.REACT_APP_API_URL;
+
 const Register = () => {
   // Initialize variables 
   const navigate = useNavigate()
@@ -16,7 +18,7 @@ const Register = () => {
     e.preventDefault();
     setErrorMessage("");
     try {
-      const response = await fetch("/api/users/register", {
+      const response = await fetch(`${API_BASE}/api/users/register`, {
         method: "POST",
         headers: { "Content-Type": "application/json"},
         body: JSON.stringify({firstName, lastName, email, password})

@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import { toISO, toDatetimeLocal } from "../utils/date";
 import PriorityTabsSelector from "./PriorityTabsSelector";
 
+const API_BASE = process.env.REACT_APP_API_URL;
+
 const TaskSettingsModal = ({ open, task, onClose, onUpdated, onDeleted }) => {
   if (!open || !task) return null;
 
@@ -31,7 +33,7 @@ const TaskSettingsModal = ({ open, task, onClose, onUpdated, onDeleted }) => {
     try {
       const token = localStorage.getItem("token");
       // Fetch task by id
-      const response = await fetch(`/api/tasks/${task._id}`, {
+      const response = await fetch(`${API_BASE}/api/tasks/${task._id}`, {
         method: "PUT",
         headers: { "Content-Type": "application/json", Authorization: `Bearer ${token}` },
         body: JSON.stringify({ title, description, dueDate: toISO(dueDate), status, priority }),
@@ -54,7 +56,7 @@ const TaskSettingsModal = ({ open, task, onClose, onUpdated, onDeleted }) => {
     try {
       const token = localStorage.getItem("token");
       // Fetch task by id
-      const response = await fetch(`/api/tasks/${task._id}`, {
+      const response = await fetch(`${API_BASE}/api/tasks/${task._id}`, {
         method: "DELETE",
         headers: { Authorization: `Bearer ${token}` },
       });

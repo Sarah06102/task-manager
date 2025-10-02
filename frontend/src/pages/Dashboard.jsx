@@ -4,6 +4,8 @@ import { IoReorderThree } from "react-icons/io5";
 import Tasks from '../components/Tasks';
 import AddTaskModal from '../components/AddTaskModal';
 
+const API_BASE = process.env.REACT_APP_API_URL;
+
 const Dashboard = () => {
   const [user, setUser] = useState(null);
   const [errorMessage, setErrorMessage] = useState("");
@@ -19,7 +21,7 @@ const Dashboard = () => {
         return;
       }
       try {
-        const response = await fetch("/api/users/profile", {
+        const response = await fetch(`${API_BASE}/api/users/profile`, {
           headers: {Authorization: `Bearer ${token}`}
         });
         const data =  await response.json();

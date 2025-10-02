@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import { toISO, toDatetimeLocal } from "../utils/date";
 import PriorityTabsSelector from "./PriorityTabsSelector";
 
+const API_BASE = process.env.REACT_APP_API_URL;
+
 const AddTaskModal = ({ open, onClose, onCreated }) => {
     if (!open) return null;
     const [title, setTitle] = useState("");
@@ -24,7 +26,7 @@ const AddTaskModal = ({ open, onClose, onCreated }) => {
         try {
             setLoading(true);
             const token = localStorage.getItem("token");
-            const response = await fetch("/api/tasks", {
+            const response = await fetch(`${API_BASE}/api/tasks`, {
                 method: "POST",
                 headers: {"Content-Type": "application/json", Authorization: `Bearer ${token}`},
                 body: JSON.stringify({title, description: desc || undefined, dueDate: toISO(due), status, priority}),

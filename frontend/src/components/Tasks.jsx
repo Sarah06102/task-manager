@@ -5,6 +5,8 @@ import { PiDotsThreeOutlineFill } from "react-icons/pi";
 import TaskSettingsModal from "./TaskSettingsModal";
 import TaskStatus from "./TaskStatus";
 
+const API_BASE = process.env.REACT_APP_API_URL;
+
 const PRIORITY_STYLES = {
     high:   "bg-red-50 text-red-700",
     medium: "bg-amber-50 text-amber-700",
@@ -166,7 +168,7 @@ const Tasks = ({ reload = 0 }) => {
         try {
             const token = localStorage.getItem("token");
             // Fetch task by id
-            const response = await fetch(`/api/tasks/${id}`, {
+            const response = await fetch(`${API_BASE}/api/tasks/${id}`, {
                 method: "GET",
                 headers: { Authorization: `Bearer ${token}` },
             });
@@ -195,7 +197,7 @@ const Tasks = ({ reload = 0 }) => {
           setError("");
           try {
             const token = localStorage.getItem("token");
-            const res = await fetch("/api/tasks", { headers: { Authorization: `Bearer ${token}` } });
+            const res = await fetch(`${API_BASE}/api/tasks`, { headers: { Authorization: `Bearer ${token}` } });
             const data = await res.json();
             if (!res.ok) { setError(data?.message || "Failed to load tasks."); return; }
             setTasks(Array.isArray(data.tasks) ? data.tasks : []);
@@ -221,7 +223,7 @@ const Tasks = ({ reload = 0 }) => {
         try {
             const token = localStorage.getItem("token");
             // Fetch task by id
-            await fetch(`/api/tasks/${taskId}`, {
+            await fetch(`${API_BASE}/api/tasks/${taskId}`, {
                 method: "PUT",
                 headers: { "Content-Type": "application/json", Authorization: `Bearer ${token}` },
                 body: JSON.stringify({ status: toStatus }),
