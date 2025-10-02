@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { toISO, toDatetimeLocal } from "../utils/date";
 import PriorityTabsSelector from "./PriorityTabsSelector";
 
-const API_BASE = process.env.REACT_APP_API_URL;
+const API_BASE = process.env.REACT_APP_API_URL || "https://task-manager-xvhd.onrender.com";
 
 const AddTaskModal = ({ open, onClose, onCreated }) => {
     if (!open) return null;

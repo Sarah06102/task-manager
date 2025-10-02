@@ -4,7 +4,7 @@ import { IoReorderThree } from "react-icons/io5";
 import Tasks from '../components/Tasks';
 import AddTaskModal from '../components/AddTaskModal';
 
-const API_BASE = process.env.REACT_APP_API_URL;
+const API_BASE = process.env.REACT_APP_API_URL || "https://task-manager-xvhd.onrender.com";
 
 const Dashboard = () => {
   const [user, setUser] = useState(null);

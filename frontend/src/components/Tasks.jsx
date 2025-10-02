@@ -5,7 +5,7 @@ import { PiDotsThreeOutlineFill } from "react-icons/pi";
 import TaskSettingsModal from "./TaskSettingsModal";
 import TaskStatus from "./TaskStatus";
 
-const API_BASE = process.env.REACT_APP_API_URL;
+const API_BASE = process.env.REACT_APP_API_URL || "https://task-manager-xvhd.onrender.com";
 
 const PRIORITY_STYLES = {
     high:   "bg-red-50 text-red-700",
