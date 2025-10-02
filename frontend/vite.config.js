@@ -8,7 +8,7 @@ export default defineConfig({
   server: {
     proxy: {
       '/api': {
-        target: 'http://localhost:5050',
+        target: 'https://task-manager-xvhd.onrender.com',
         changeOrigin: true,
       },
     },
