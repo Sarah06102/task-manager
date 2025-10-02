@@ -11,6 +11,11 @@ import userRoutes from './routes/userRoutes.js';
 import taskRoutes from './routes/taskRoutes.js';
 import { errorHandler, notFound } from './middleware/errorMiddleware.js';
 
+const allowedOrigins = [
+    "http://localhost:5174",
+    "https://task-manager-xi-five-71.vercel.app"
+];
+
 // Load environment variables
 dotenv.config();
 
@@ -22,11 +27,19 @@ const app = express();
 
 // Middleware
 app.use(cors({
-    origin:'https://task-manager-xi-five-71.vercel.app/',
+    origin: function (origin, callback) {
+        if (!origin) return callback(null, true);
+        if (allowedOrigins.includes(origin)) {
+            callback(null, true);
+        } else {
+            callback(new Error("Not allowed by CORS"));
+        }
+    },
     methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH', 'OPTIONS'],
     credentials: false,
     allowedHeaders: ['Content-Type', 'Authorization']
 })); 
+
 app.use(express.json());
 
 // Mount routes
