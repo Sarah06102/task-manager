@@ -8,6 +8,7 @@ import express from 'express';
 import cors from 'cors';
 import connectDB from './config/db.js';
 import userRoutes from './routes/userRoutes.js';
+import taskRoutes from './routes/taskRoutes.js';
 import { errorHandler, notFound } from './middleware/errorMiddleware.js';
 
 // Load environment variables
@@ -30,6 +31,7 @@ app.use(express.json());
 
 // Mount routes
 app.use('/api/users', userRoutes);
+app.use('/api/tasks', taskRoutes);
 
 // Error handler
 app.use(notFound);

@@ -1,7 +1,7 @@
 // Logic for user creation/login
 import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
-import User from '../models/User.js';
+import User from '../models/user.js';
 
 const sign = (uid) => jwt.sign({uid}, process.env.JWT_SECRET, {expiresIn: "7d"});
 
