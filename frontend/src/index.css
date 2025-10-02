@@ -1,1 +1,21 @@
 @import "tailwindcss";
+
+.no-scrollbar { 
+    -ms-overflow-style: none;
+    scrollbar-width: none; 
+}
+.no-scrollbar::-webkit-scrollbar { 
+    display: none; 
+}
+
+.react-calendar__tile { 
+    border-radius: 0.5rem; 
+}
+.react-calendar__tile--active { 
+    background: #f43f5e; 
+    color: #fff; 
+    border-radius: 0.5rem; 
+}
+.react-calendar__tile:enabled:hover { 
+    background: #fff1f2; 
+}

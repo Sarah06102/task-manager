@@ -2,11 +2,14 @@ import React, { useEffect, useState } from 'react';
 import SidePanel from '../components/SidePanel';
 import { IoReorderThree } from "react-icons/io5";
 import Tasks from '../components/Tasks';
+import AddTaskModal from '../components/AddTaskModal';
 
 const Dashboard = () => {
   const [user, setUser] = useState(null);
   const [errorMessage, setErrorMessage] = useState("");
   const [open, setOpen] = useState(false);
+  const [addOpen, setAddOpen] = useState(false);
+  const [reload, setReload] = useState(0);
 
   useEffect(() => {
     const fetchUser = async () => {
@@ -36,7 +39,7 @@ const Dashboard = () => {
   return (
     <div className="min-h-screen bg-rose-100"> 
       <div className="flex">
-        <SidePanel isOpen={open} onClose={() => setOpen(false)} />
+        <SidePanel isOpen={open} onClose={() => setOpen(false)} onAddTask={() => setAddOpen(true)}/>
         {/* Content area */}
         <main className="flex-1 p-4">
           {user && (
@@ -53,8 +56,10 @@ const Dashboard = () => {
               </div>
             </div>
           )}
-          <Tasks />
+          <Tasks reload={reload}/>
         </main>
+
+        <AddTaskModal open={addOpen} onClose={() => setAddOpen(false)} onCreated={(task) => {console.log("Created:", task); setAddOpen(false); setReload(r => r + 1);}} />
       </div>
     </div>
   );

@@ -47,13 +47,12 @@ const Login = () => {
                 {/* Left visual panel */}
                 <div className="bg-gradient-to-br from-rose-400 to-rose-500 flex flex-col items-center justify-center p-10">
                     <h1 className="text-white font-semibold text-2xl">MyTaskManager</h1>
-                    <p className="mt-4 text-white/90">Plan. Track. Ship.</p>
+                    <p className="mt-4 text-white/90">Plan → Track → Ship.</p>
                     <ul className="mt-3 space-y-2 text-white/80 text-sm">
                         <li>• Create & assign tasks</li>
                         <li>• Update status in one click</li>
                         <li>• See progress at a glance</li>
                     </ul>
-                    <div className="mt-6 w-28 h-28 rounded-2xl bg-white/15 backdrop-blur shadow-2xl rotate-6" />
                 </div>
 
                 {/* Right form panel */}
@@ -78,7 +77,7 @@ const Login = () => {
                         <button onClick={handleLogin} className=" bg-rose-200 text-rose-900 rounded-3xl px-4 py-2 font-semibold cursor-pointer hover:bg-rose-300 hover:scale-105 ease-in-out duration-300">Login</button>
                     </div>
                     <p className="text-sm mt-3">Don't have an account?<button onClick={() => navigate("/register")} className="p-1 font-semibold rounded-xl text-rose-900 cursor-pointer hover:underline ease-in-out duration-300">Register</button></p>
-                    <button className="text-sm p-1 font-semibold rounded-xl text-rose-900 cursor-pointer hover:underline ease-in-out duration-300">Forgot Password?</button>
+                    {/* <button className="text-sm p-1 font-semibold rounded-xl text-rose-900 cursor-pointer hover:underline ease-in-out duration-300">Forgot Password?</button> */}
                 </div>
             </div>
         </div>

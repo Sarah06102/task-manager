@@ -50,13 +50,12 @@ const Register = () => {
             {/* Left visual panel */}
             <div className="bg-gradient-to-br from-rose-400 to-rose-500 flex flex-col items-center justify-center p-10">
                 <h1 className="text-white font-semibold text-2xl">MyTaskManager</h1>
-                <p className="mt-4 text-white/90">Plan. Track. Ship.</p>
+                <p className="mt-4 text-white/90">Plan → Track → Ship.</p>
                 <ul className="mt-3 space-y-2 text-white/80 text-sm">
                     <li>• Create & assign tasks</li>
                     <li>• Update status in one click</li>
                     <li>• See progress at a glance</li>
                 </ul>
-                <div className="mt-6 w-28 h-28 rounded-2xl bg-white/15 backdrop-blur shadow-2xl rotate-6" />
             </div>
 
             {/* Right form panel */}
